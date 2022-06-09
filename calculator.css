@@ -10,26 +10,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1d1b1b;
 }
 
 #main-container{
-    width: 350px;
-    height: 500px;
-    border: solid 1px black;
+    /* width: 280px;
+    height: 500px; */
+    width: 100%;
+    /* border: solid 1px black; */
     display: flex;
     flex-direction: column;
+    border-radius: 14px;
+    align-items: center;
 }
 
 #display-container{
     display: flex;
     flex-direction: column;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     width: inherit;
-    height: 170px;
+    height: 270px;
 }
 
 #result-display, #calculation-display {
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
     flex: 1;
 }
 
@@ -37,11 +41,23 @@ body {
     flex-grow: 2;
 }
 
+/* Buttons */
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.sign {
+    background-color: #FFDB58;
+    color: rgb(5, 5, 5);
+}
+
 #btn-container{
     display: flex;
-    width: inherit;
-    height: inherit;
-    border: solid 1px aquamarine;
+    width: 280px;
+    height: 323px;
+    /* border: solid 1px aquamarine; */
     flex-direction: column;
 }
 
@@ -55,7 +71,7 @@ body {
 
 #clear-btn, #delete-btn{
     /* padding: 5px; */
-    border: solid 1px red;
+    /* border: solid 1px red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +81,8 @@ body {
 }
 
 #the-clear-btn, #the-delete-btn{
-
+    width: 100%;
+    height: 100%;
 }
 
 #btn-second-section{
@@ -73,18 +90,33 @@ body {
     width: inherit;
     flex: 1;
     flex-direction: column;
+    /* background-color: #1d1b1b; */
 }
 
 .btn-pack {
     display: flex;
     flex: 1;
-    border: solid 1px blueviolet;
+    /* border: solid 1px blueviolet; */
+    gap: 15px;
+    padding: 5px;
 }
 
 .each-btn {
     display: flex;
     flex: 1;
-    border: solid 1px black;
+    /* border: solid 1px black; */
+    border-radius: 50px;
+}
+
+.each-btn-num {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    font-size: 25px;
+}
+
+.num-0 {
+    flex-grow: 2.3;
 }
 
 

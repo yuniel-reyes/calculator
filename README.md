@@ -9,7 +9,8 @@ A calculator app using HTML, CSS and JS
 
 ### Non-functional requirements
 
-3. Create a basic HTML calculator with buttons for each digit, each of the above functions and an “Equals” key.
+3. Create a basic HTML calculator with buttons for each digit, each of 
+   the above functions and an “Equals” key.
 
 
 ### Functional requirements
