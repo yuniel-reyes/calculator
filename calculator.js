@@ -1,3 +1,5 @@
+// FUNCTIONS
+
 // add() function
 function add(a, b){
     return alert(a + b);
@@ -42,3 +44,19 @@ function operator(){
 }
 
 // operator();
+
+// Create populate() function
+// This function will get the pressed number and return it for now
+function populate(e){
+    return console.log(e.target.textContent);
+}
+
+
+
+// REFERENCES AND EVENTS HANDLERS
+
+// Get numbers references
+const theNumbers = document.querySelectorAll('.each-btn-num');
+// Add an event handler to each number button. The event handler
+// should call the populate() function
+theNumbers.forEach(eachNumber => eachNumber.addEventListener('click', populate));
