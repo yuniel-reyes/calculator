@@ -32,14 +32,22 @@ function operator(firstNumber, secondNumber, theOperator){
     switch (thisOperator) { 
         case '×':
             let theMultiplication = multiply(thisFirstNumber, thisSecondNumber)
-            return theMultiplication;
+            if (Number.isInteger(theMultiplication)){
+                return theMultiplication;
+            } else {
+                return theMultiplication.toFixed(1);
+            }
         case '÷':
             let theDivision = divide(thisFirstNumber, thisSecondNumber);
-            return theDivision;
+            if (Number.isInteger(theDivision)){
+                return theDivision;
+            } else {
+                return theDivision.toFixed(1); 
+            }
         case '+':
             let theSum = add(thisFirstNumber, thisSecondNumber);
             return theSum;
-        case '-':
+        case '−':
             let theSubtraction = subtract(thisFirstNumber, thisSecondNumber);
             return theSubtraction;
         default:
@@ -50,15 +58,16 @@ function operator(firstNumber, secondNumber, theOperator){
 // The getFirstNumber function check for the firstNumber 
 function getFirstNumber(thisBtn){
     let thisNumber = thisBtn;
-
-    if (firstNumber.length == 0 && thisNumber.match(/[1-9]/)){ // do not repeat the 0
+    // do not repeat 0 and do not enter . as first char
+    if (firstNumber.length == 0 && thisNumber.match(/[1-9]/)){
         // Store firstNumber
         firstNumber = thisNumber;
-    } else { 
+        return firstNumber
+    } else if (Boolean(firstNumber)) { 
         // firstNumber is of two or more digits
         firstNumber += thisNumber;
-    } 
-    return firstNumber;  
+        return firstNumber;  
+    }
 }
 
 // The getOperator() function
@@ -107,23 +116,29 @@ function populate(e){
     let pressedBtn = e.target.textContent;
     console.log(pressedBtn);
 
-    // The getFirstNumber function will be called if not operator
-    if (theOperator.length == 0 && !pressedBtn.match(/[−=×÷\+]/)){
+    // The getFirstNumber function will be called if not operator 
+    if (theOperator.length == 0 && !pressedBtn.match(/[\−=×÷\+]/)
+        && !(firstNumber.length == 0 && pressedBtn == "0")){
         getFirstNumber(pressedBtn);
         return calculationArea.textContent = firstNumber;
     }
     // Get operator
-    if (pressedBtn.match(/[−=×÷\+]/) && !secondNumber){
+    if (pressedBtn.match(/[\−=\×÷\+]/) && !secondNumber){
         getOperator(pressedBtn);
         return theResultDisplay.textContent = firstNumber + " " + theOperator;
     }
     // Get second number
     if (theOperator.length !== 0 && pressedBtn.match(/[0-9]/)){
-        getSecondNumber(pressedBtn);
-        return calculationArea.textContent = secondNumber;
+            getSecondNumber(pressedBtn);
+            if (secondNumber === "0" && theOperator == "÷"){
+                secondNumber = "";
+                return alert("You can't divide by 0!");
+            } else {
+            return calculationArea.textContent = secondNumber;    
+        }
     }
     // Check result
-    if (pressedBtn.match(/[−=×÷\+]/) && secondNumber){
+    if (pressedBtn.match(/[−=\×÷\+]/) && secondNumber){
         if (pressedBtn == "="){
             let thisOperation = operator(firstNumber, secondNumber, theOperator);
             calculationArea.textContent = thisOperation;
@@ -139,6 +154,14 @@ function populate(e){
     }
 }
 
+// reset() function clear out the displays
+function reset(){
+    firstNumber = "";
+    secondNumber = "";
+    theOperator = "";
+    theResultDisplay.textContent = "";
+    calculationArea.textContent = 0;
+}
 
 
 // REFERENCES AND EVENTS HANDLERS
@@ -165,3 +188,15 @@ let displayContent = "";
 
 // Get reference of result display
 let theResultDisplay = document.getElementById('result-display').childNodes[1];
+
+// Get reference of the AC button
+const theResetBtn = document.getElementById('ac-sign');
+// Add event handler to the reset button
+theResetBtn.addEventListener('click', reset);
+
+// Get reference of decimal point button
+const decimalBtn = document.getElementById('bullet');
+// Add event handler to the decimal point button
+decimalBtn.addEventListener('click', populate);
+
+
