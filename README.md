@@ -14,6 +14,7 @@ A calculator app using HTML, CSS and JS
 2. Add a display and a result area
 3. Add a clear button (functionality 5)
 4. Add a button that allows user to enter decimal numbers (functionality 7)
+5. Add a “backspace” button
 
 
 ### Functional requirements
@@ -111,8 +112,18 @@ A calculator app using HTML, CSS and JS
 
 8. Create global variables to store the first number, the second number,
    and the operator
-       
-
+9. “Backspace” button (5)
+  - Get node reference
+  - Add event handler with function `deleteLast()`
+    `deleteLast()` should:
+     - get string of calculation area and return the same string without the last char
+     - create array from string
+     - pop up the last item
+     - join the remaining items in the array
+     First or second number
+     - if not operator, first number
+     - else, second number  
+     - If not number in calculation area, CA = 0    
 
 
 #### Bottleneck

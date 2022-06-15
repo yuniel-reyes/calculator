@@ -168,7 +168,7 @@ function resultWithOthersOperators(pressedBtn){
 // This function will get the pressed number and return it for now
 function populate(e){
     let pressedBtn = e.target.textContent;
-    console.log(pressedBtn);
+    // console.log(pressedBtn);
 
     // The getFirstNumber function will be called if not operator
     // not operator, PB not operator and not first number being 0 
@@ -199,6 +199,29 @@ function populate(e){
             return;
         }
     }
+}
+
+function deleteLast(){
+
+    // Get string of calculation area and remove the last char
+    // every time
+    let currentNumber = calculationArea.textContent;
+    currentNumber = currentNumber.split("");
+    currentNumber.pop();
+    let updatedNumber = currentNumber.join("");
+    // if number is first number
+    if (!theOperator) {
+        firstNumber = updatedNumber;
+        calculationArea.textContent = firstNumber;
+    } else {
+        // if number is second number
+        secondNumber = updatedNumber;
+        calculationArea.textContent = updatedNumber;
+    }
+    if (calculationArea.textContent.length == 0){
+        calculationArea.textContent = 0;
+    }
+    return;
 }
 
 // reset() function clear out the displays
@@ -245,5 +268,11 @@ theResetBtn.addEventListener('click', reset);
 const decimalBtn = document.getElementById('bullet');
 // Add event handler to the decimal point button
 decimalBtn.addEventListener('click', decimalPoint);
+
+// Get reference of delete button
+const theDeleteBtn = document.getElementById('delete-btn');
+// Add event handler to it
+// Call deleteLast() if clicked
+theDeleteBtn.addEventListener('click', deleteLast);
 
 

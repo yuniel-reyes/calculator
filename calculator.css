@@ -23,6 +23,7 @@ body {
     border-radius: 14px;
     align-items: center;
 }
+
 /* Calculation display */
 #display-container{
     display: flex;
@@ -88,15 +89,21 @@ button {
     justify-content: space-around;
 }
 
-#clear-btn, #delete-btn{
-    /* padding: 5px; */
-    /* border: solid 1px red; */
+#clear-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex: 1; */
     width: 45%;
+}
 
+.each-btn.delete-last {
+    flex-grow: 2.3;
+}
+
+.each-btn.each-btn.delete-last button{
+    background-color: #e26666;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
 }
 
 #the-clear-btn, #the-delete-btn{
