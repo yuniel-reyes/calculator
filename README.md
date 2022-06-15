@@ -3,4 +3,4 @@
 
 A simple calculator app using HTML, CSS and JS
 
-[Live Demo]()
+[Live Demo](https://yuniel-reyes.github.io/calculator/)
